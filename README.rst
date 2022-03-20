@@ -1,4 +1,4 @@
-** RiboGalaxy Toolshed **
+* RiboGalaxy Toolshed *
 
 Galaxy toolshed for RiboGalaxy 
 
