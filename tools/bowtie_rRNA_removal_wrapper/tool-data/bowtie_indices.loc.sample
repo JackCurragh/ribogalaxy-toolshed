@@ -1,3 +1,1 @@
-hg38rrna    hg38    Human_hg38  /home/DATA/reference_files/hg38_human_rRNA/rRNA_indexes/hg38rRNA
-hg38rrna2   hg382    Human_hg382    /home/DATA/reference_files/hg38_human_rRNA/rRNA_indexes/hg38rRNA
-hg38rrna3   hg383    Human_hg383    /home/DATA/reference_files/hg38_human_rRNA/rRNA_indexes/hg38rRNA
+yeast_rRNA  yeast_test  yeast_rRNA  ${__HERE__}/indexes/yeast_rRNA

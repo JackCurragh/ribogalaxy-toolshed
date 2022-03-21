@@ -1,7 +1,7 @@
-<tool id="bowtie_rRNA_removal_wrapper" name="Remove rRNA using Bowtie" version="1.2.0">
+<tool id="bowtie_rRNA_removal_wrapper" name="Remove rRNA using Bowtie" version="1.4.0">
   <description></description>
   <requirements>
-    <requirement type="package" version="1.4.0">bowtie</requirement>
+    <requirement type="package" version="1.2.0">bowtie</requirement>
   </requirements>
   <version_command>bowtie --version</version_command>
   <command>
@@ -156,7 +156,7 @@
     <conditional name="refGenomeSource">
       <param name="genomeSource" type="select" label="Will you select a reference genome from your history or use a built-in index?" help="Built-ins were indexed using default options">
         <option value="indexed">Use a built-in index</option>
-        <option value="history">Use one from the history</option>
+        <option value="history" selected="True">Use one from the history</option>
       </param>
       <when value="indexed">
         <param name="index" type="select" label="Select a reference genome" help="if your genome of interest is not listed - contact Galaxy team">
