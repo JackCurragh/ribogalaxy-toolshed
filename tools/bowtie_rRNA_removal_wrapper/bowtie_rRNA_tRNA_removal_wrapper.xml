@@ -1,11 +1,11 @@
-<tool id="bowtie_rRNA_removal_wrapper" name="Remove rRNA using Bowtie" version="1.4.0">
+<tool id="bowtie_rRNA_tRNA_removal_wrapper" name="Remove rRNA and tRNA using Bowtie" version="1.4.0">
   <description></description>
   <requirements>
     <requirement type="package" version="1.2.0">bowtie</requirement>
   </requirements>
   <version_command>bowtie --version</version_command>
   <command>
-    python '$__tool_directory__/bowtie_rRNA_removal_wrapper.py'
+    python '$__tool_directory__/bowtie_rRNA_tRNA_removal_wrapper.py'
       ## Set number of threads
       --threads="\${GALAXY_SLOTS:-4}"
       ## Outputs
