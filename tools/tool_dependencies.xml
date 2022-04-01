@@ -1,0 +1,11 @@
+<tool_dependency>
+     <package name="biopython" version="1.79">
+        <repository name="package_biopython_1_79" owner="biopython" />
+    </package>
+    <package name="ez_setup" version="0.9">
+        <repository changeset_revision="10fd2e2a9f2f" name="package_ez_setup_0_9" owner="iuc" prior_installation_required="True" toolshed="https://toolshed.g2.bx.psu.edu" />
+    </package>
+    <package name="pysam" version="0.7.7">
+        <repository name= 
+    </package>
+</tool_dependency>

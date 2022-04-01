@@ -1,24 +1,24 @@
 <tool id="get_chrom_sizes" name="Get Chromosome Sizes" version="1.0">
-    <description>order of storing aligned sequences</description>
-    <command><![CDATA[
-        cut -f1,2 '${input1}' > '${output1}' 
-    ]]></command>
+    <description>Chromosome sizes are needed for the creation of ribosome profiles. This tool generates a tab delimited chrom.sizes file from an inputted fasta</description>
+    <command>
+        python $__tool_directory__/calculating_chrom.sizes.py ${input1} ${output1}
+    </command>
     <inputs>
-        <param name="input1" type="data" format="fai" label="FASTA FAI File" />
+        <param name="input1" type="data" format="fasta" label="FASTA File" />
     </inputs>
     <outputs>
        <data name="output1" format="tabular"/>
     </outputs>
     <tests>
         <test>
-            <param name="input1" value="test.fasta.fai" ftype="fai" />
+            <param name="input1" value="test.fasta" ftype="fasta" />
             <output name="output1" file="test.fasta.sizes" ftype="tabular" lines_diff="4" />
         </test>
     </tests>
     <help>
 **What it does**
 
-creates a chromosome sizes file from a fai index
+creates a chromosome sizes file from a fasta file
     </help>
     <citations/>
 </tool>

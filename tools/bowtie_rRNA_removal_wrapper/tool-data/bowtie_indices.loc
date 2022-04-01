@@ -1,1 +1,23 @@
-yeast_rRNA	yeast_test	yeast_rRNA	/home/jack/projects/tools_for_Galaxy/ribogalaxy-toolshed/tools/bowtie_rRNA_removal_wrapper/tool-data/indexes/yeast_rRNA
+sacCer9rRNA	sacCer9	Saccharomyces cerevisiae rRNA	/data/indices/bowtie/ncRNA/sacCer_9/sacCer_9_rRNA
+sacCer9tRNA	sacCer9	Saccharomyces cerevisiae tRNA	/data/indices/bowtie/ncRNA/sacCer_9/sacCer_9_tRNA
+sacCer9rRNAtRNA	sacCer9	Saccharomyces cerevisiae rRNA and tRNA	/data/indices/bowtie/ncRNA/sacCer_9/sacCer_9_rRNA_tRNA
+
+hg38rRNA	hg38	Homo sapiens rRNA	/data/indices/bowtie/ncRNA/homo_sapiens_hg38/homo_sapiens_hg38_rRNA
+hg38tRNA	hg38	Homo sapiens tRNA	/data/indices/bowtie/ncRNA/homo_sapiens_hg38/homo_sapiens_hg38_tRNA
+hg38rRNAtRNA	hg38	Homo sapiens rRNA and tRNA	/data/indices/bowtie/ncRNA/homo_sapiens_hg38/homo_sapiens_hg38_rRNA_tRNA
+
+e_colirRNA	e_coli	Escherichia coli rRNA	/data/indices/bowtie/ncRNA/E_coli_K12_MG1655/E_coli_K12_MG1655_rRNA
+e_colitRNA	e_coli	Escherichia coli tRNA	/data/indices/bowtie/ncRNA/E_coli_K12_MG1655/E_coli_K12_MG1655_tRNA
+e_colirRNAtRNA	e_coli	Escherichia coli rRNA and tRNA	/data/indices/bowtie/ncRNA/E_coli_K12_MG1655/E_coli_K12_MG1655_rRNA_tRNA
+
+dm6rRNA	dm6	Drosophila melanogater rRNA	/data/indices/bowtie/ncRNA/drosophila_melanogater_dm6/drosophila_melanogater_dm6_rRNA
+dm6tRNA	dm6	Drosophila melanogater tRNA	/data/indices/bowtie/ncRNA/drosophila_melanogater_dm6/drosophila_melanogater_dm6_tRNA
+dm6rRNAtRNA	dm6	Drosophila melanogater rRNA and tRNA	/data/indices/bowtie/ncRNA/drosophila_melanogater_dm6/drosophila_melanogater_dm6_rRNA_tRNA
+
+m28rRNA	m28	Mus musculus rRNA	/data/indices/bowtie/ncRNA/mus_musculus_m28/mus_musculus_m28_rRNA
+m28tRNA	m28	Mus musculus tRNA	/data/indices/bowtie/ncRNA/mus_musculus_m28/mus_musculus_m28_tRNA
+m28rRNAtRNA	m28	Mus musculus rRNA and tRNA	/data/indices/bowtie/ncRNA/mus_musculus_m28/mus_musculus_m28_rRNA_tRNA
+
+araThalrRNA	araThal	Arabidopsis thaliana (TAIR10) rRNA	/data/indices/bowtie/ncRNA/Arabidopsis/Arabidopsis_rRNA
+araThaltRNA	araThal	Arabidopsis thaliana (TAIR10) tRNA	/data/indices/bowtie/ncRNA/Arabidopsis/Arabidopsis_tRNA
+araThalrRNAtRNA	araThal	Arabidopsis thaliana (TAIR10) rRNA and tRNA	/data/indices/bowtie/ncRNA/Arabidopsis/Arabidopsis_rRNA_tRNA
