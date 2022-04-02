@@ -1,19 +1,19 @@
 <tool id="create_ribosome_profiles" name="Create Ribosome Profiles" version="1.0">
-    <description>order of storing aligned sequences</description>
+    <description>Produce a sorted bed file from a sorted BAM file with the option of introducing an offset to the A-Site of a ribosome protected fragment.</description>
     <requirements>
         <requirement type="package" version="1.79">biopython</requirement>
         <requirement type="package" version="0.19.0">pysam</requirement>
+        <requirement type="binary" version="0.19.0">pysam</requirement>
     </requirements>
-    <command>python $__tool_directory__/bam_to_ribosome_profile.py ${input1} ${input2} ${input3} ${input4} ${input5}</command>
+    <command>python $__tool_directory__/bam_to_ribosome_profile.py ${input1} ${input2} ${input3} ${input4}</command>
     <inputs>
         <param name="input1" type="data" format="bam" label="BAM file to process"/>
         <param name="input2" type="integer" value="15" label="Offset to use" help="Use 15 for elongating ribosomes, 12 for initiating and 0 form RNA-seq reads"/>
-        <param name="input3" type="data" format="fasta" label="FASTA File to which the reads were aligned"/>
-        <param name="input4" type="select" label="Whether to use Offset or weight centered approach for calculating A-site position" help ="Use Offset for RNase and Weight for MNase">
+        <param name="input3" type="data" format="fasta" label="FASTA file to which the reads were aligned"/>
+        <param name="input4" type="select" label="Approach" help ="Use Offset for RNase and Weight for MNase">
             <option value="offset" selected="true">Use offset approach</option>
             <option value="weight">Use weight centered approach</option>
         </param>
-        <param name="input5" type="boolean" truevalue="true" falsevalue="false" checked="True" label="Do you want to make a BigWig file also?"/>
     </inputs>
     <outputs>
        <data name="output1" format="tabular"/>
@@ -24,14 +24,14 @@
             <param name="input2" value="15"/>
             <param name="input3" value="sacCer3_transcripts.fasta"/>
             <param name="input4" value="offset"/>
-            <param name="input5" value="false"/>
             <output name="output1" file="test.bam.sorted.bed.sorted " ftype="tabular" lines_diff="4" />
         </test>
     </tests>
     <help>
-**What it does**
+    **What it does**
 
-creates a chromosome sizes file from a fai index
+    Produce a sorted bed file from a sorted BAM file with the option of introducing an offset to the A-Site of a ribosome protected fragment.
+
     </help>
     <citations/>
 </tool>

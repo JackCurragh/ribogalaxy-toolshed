@@ -77,7 +77,7 @@ def create_chrom_sizes(fasta_path):
 	chromSizesoutput.close()
 
 
-def main(bam_path, fasta_path, mode="offset", offset=0, create_bw=False):
+def main(bam_path, fasta_path, mode="offset", offset=0):
 	'''
 	create sorted bed file of a ribosome profile in two mode options
 	offset - calculate a site with an inputted estimated distance from read end. Same applied to all read lengths 
@@ -115,24 +115,18 @@ def main(bam_path, fasta_path, mode="offset", offset=0, create_bw=False):
 	command = "sort -k1,1 -k2,2n %s > %s"%(bed_path, bed_path + ".sorted")
 	os.system(command)
 
-	if create_bw.casefold() == "True".casefold():
-		create_chrom_sizes(fasta_path)
-		bash_command = f"./bedGraphToBigWig {bed_path}.sorted {fasta_path + '_chrom.sizes'} {bed_path}.sorted.bw"
-		os.system(bash_command)
-
 
 if __name__ == '__main__':
 	bam_path = str(argv[1]) 
 	offset = int(argv[2])
 	fasta_path = str(argv[3])
 	mode = argv[4]
-	create_bw = argv[5]
 
 	if not os.path.exists(bam_path + ".bai"): 
 		print(bam_path)
 		pysam.index(bam_path)
 	
-	main(bam_path = bam_path, fasta_path = fasta_path, mode=mode, offset=offset, create_bw=create_bw)
+	main(bam_path = bam_path, fasta_path = fasta_path, mode=mode, offset=offset)
 
 
 
