@@ -1,24 +1,37 @@
-<tool id="get_chrom_sizes" name="Get Chromosome Sizes" version="1.0">
-    <description>order of storing aligned sequences</description>
+<tool id="bam_to_sqlite" name="BAM to Sqlite (TRIPS-Viz)" version="1.0">
+    <description>Convert BAM file to SQLITE for TRIPS-Viz</description>
+    <requirements>
+        <requirement type="package" version="0.19.0">pysam</requirement>
+        <requirement type="package" version="2.0.0">sqlitedict</requirement>
+        <requirement type="package" version="3.37.1">sqlite</requirement>
+    </requirements>
     <command><![CDATA[
-        cut -f1,2 '${input1}' > '${output1}' 
+        python $__tool_directory__/bam_to_sqlite.py <path_to_bam_file> <path_to_organism.sqlite> <file_description (optional)> 
     ]]></command>
     <inputs>
-        <param name="input1" type="data" format="fai" label="FASTA FAI File" />
+        <param name="input1" type="data" format="bam" label="BAM file" />
+        <param name="input2" type="data" format="sqlite" label="Path to organism SQLITE annotation file" />
+        <param name="input3" type="data" format="text" label="Description of this sample" />
     </inputs>
     <outputs>
-       <data name="output1" format="tabular"/>
+       <data name="output1" format="sqlite"/>
     </outputs>
     <tests>
         <test>
-            <param name="input1" value="test.fasta.fai" ftype="fai" />
-            <output name="output1" file="test.fasta.sizes" ftype="tabular" lines_diff="4" />
+            <param name="input1" value="test.bam" ftype="bam"/>
+            <param name="input2" value="test.sqlite" ftype="sqlite"/>
+            <param name="input3" value="TEST DESCRIPTION" ftype="text"/>
+            <output name="output1" file="test.bam.sqlite" ftype="sqlite" lines_diff="4" />
         </test>
     </tests>
     <help>
-**What it does**
+        **What it does**
 
-creates a chromosome sizes file from a fai index
+        Process your transcriptome read alignments for TRIPS-Viz 
+
+        Prerequisites: 
+        - name-sorted bam file (samtools sort -n)
+        - TRIPS-Viz annotation file in SQLITE format.
     </help>
     <citations/>
 </tool>
