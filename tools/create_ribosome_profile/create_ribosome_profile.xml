@@ -3,7 +3,6 @@
     <requirements>
         <requirement type="package" version="1.79">biopython</requirement>
         <requirement type="package" version="0.19.0">pysam</requirement>
-        <requirement type="binary" version="0.19.0">pysam</requirement>
     </requirements>
     <command>python $__tool_directory__/bam_to_ribosome_profile.py ${input1} ${input2} ${input3} ${input4}</command>
     <inputs>
