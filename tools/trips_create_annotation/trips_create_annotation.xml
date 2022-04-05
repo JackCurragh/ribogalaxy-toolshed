@@ -1,24 +1,42 @@
-<tool id="get_chrom_sizes" name="Get Chromosome Sizes" version="1.0">
-    <description>order of storing aligned sequences</description>
+<tool id="trips_create_annotation" name="Create TRIPS-Viz annotation" version="1.0">
+    <description>Covert GFF3/GTF and transcriptome FASTA to custom annotation sqlite</description>
+    <requirements>
+        <requirement type="package" version="0.19.0">pysam</requirement>
+        <requirement type="package" version="2.0.0">sqlitedict</requirement>
+        <requirement type="package" version="3.37.1">sqlite</requirement>
+        <requirement type="package" version="3.0.2">intervaltree</requirement>
+
+    </requirements>
     <command><![CDATA[
-        cut -f1,2 '${input1}' > '${output1}' 
+        python $__tool_directory__/create_annotation_sqlite.py ${input1} ${input2} ${input3} ${input4} ${input5} ${input6}
     ]]></command>
     <inputs>
-        <param name="input1" type="data" format="fai" label="FASTA FAI File" />
+        <param name="input1" type="text" label="Transcriptome name" />
+        <param name="input2" type="data" format="gff" label="Transcriptome Annotation file (GFF/GTF)" />
+        <param name="input3" type="data" format="fasta" label="Transcriptome FASTA File" />
+        <param name="input4" type="integer" value="0" label="Psuedo UTR length" help="This value will be added used to create UTRs of this length. This is useful when looking at transcriptomes without annotated UTRs"/>
+        <param name="input5" type="text" label="Transcript ID" help="An example of a transcript_id from the annotation file, e.g ENST000000123456.1"/>
+        <param name="input6" type="text" label="Gene Name" help="An example of a gene name from the annotation file" />
     </inputs>
     <outputs>
-       <data name="output1" format="tabular"/>
+       <data name="output1" format="sqlite"/>
     </outputs>
     <tests>
         <test>
-            <param name="input1" value="test.fasta.fai" ftype="fai" />
-            <output name="output1" file="test.fasta.sizes" ftype="tabular" lines_diff="4" />
+        <param name="input1" value="test_organism" ftype="text"/>
+        <param name="input2" value="test.gtf" ftype="gff"/>
+        <param name="input3" value="test.fasta" ftype="fasta"/>
+        <param name="input4" value="0" ftype="integer"/>
+        <param name="input5" value="YAL012W" ftype="text"/>
+        <param name="input6" value="YDL248W" ftype="text"/>
+        <output name="output1" file="test_organism.sqlite" ftype="sqlite" lines_diff="4" />
         </test>
     </tests>
     <help>
-**What it does**
+    **What it does**
 
-creates a chromosome sizes file from a fai index
+    Builds a custom transcirptome annoatation stored in sqlite format for you organism.
     </help>
     <citations/>
 </tool>
+

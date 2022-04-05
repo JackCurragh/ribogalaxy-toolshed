@@ -1,4 +1,4 @@
-#python /home/DATA/GWIPS_viz/python_and_other_scripts/Converting_to_ribosomeprofiles/bowtieOutputToRibosomeProfileBedfile_RNase1.py /home/DATA/GWIPS_viz/Ribo_seq/Gao14_human/QTI_HEK293_AminoAcid_Starvation/QTI_HEK293_AminoAcid_Starvation.bam_sorted.bam 12 /home/DATA/GWIPS_viz/Annotations_genomes_etc/Homo_sapiens_UCSC/UCSC/hg19/Sequence/WholeGenomeFasta/genome.fa
+#python /home/data2/GWIPS_viz/python_and_other_scripts/Converting_to_ribosomeprofiles/bowtieOutputToRibosomeProfileBedfile_RNase1.py /home/data2/GWIPS_viz/Ribo_seq/Gao14_human/QTI_HEK293_AminoAcid_Starvation/QTI_HEK293_AminoAcid_Starvation.bam_sorted.bam 12 /home/data2/GWIPS_viz/Annotations_genomes_etc/Homo_sapiens_UCSC/UCSC/hg19/Sequence/WholeGenomeFasta/genome.fa
 
 
 from Bio import  SeqIO

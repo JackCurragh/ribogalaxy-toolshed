@@ -31,9 +31,9 @@ if os.path.isfile("{}.sqlite".format(organism)):
     sys.exit()
 
 
-old_exons = SqliteDict(
-    "/home/DATA/www/tripsviz/tripsviz/trips_annotations/mus_musculus/transcriptomic_to_genomic.sqlite"
-)
+# old_exons = SqliteDict(
+#     "/home/data2/www/tripsviz/tripsviz/trips_annotations/mus_musculus/transcriptomic_to_genomic.sqlite"
+# )
 
 
 delimiters = {
@@ -977,7 +977,7 @@ print("delim", delimiters)
 if (nuc_dict["starts"]["other"] / nuc_dict["starts"]["starts"]) > 0.05:
     print(
         "Warning: {} transcripts do not have a an AUG at the CDS start position".format(
-            nuc_dict["starts"][" ther"]
+            nuc_dict["starts"]["other"]
         )
     )
 if (nuc_dict["stops"]["other"] / nuc_dict["stops"]["stops"]) > 0.05:
