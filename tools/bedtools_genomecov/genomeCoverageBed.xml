@@ -38,7 +38,7 @@ $three
         <conditional name="input_type">
             <param name="input_type_select" type="select" label="Input type">
                 <option value="bed">@STD_BEDTOOLS_INPUT_LABEL@</option>
-                <option value="bam">BAM</option>
+                <option value="bam" selected='true'>BAM</option>
             </param>
             <when value="bed">
                 <param name="input" argument="-i" type="data" format="@STD_BEDTOOLS_INPUTS@" label="@STD_BEDTOOLS_INPUT_LABEL@ file" />

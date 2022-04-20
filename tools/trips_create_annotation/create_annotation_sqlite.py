@@ -6,6 +6,8 @@
 import sys
 import re
 import sqlite3
+import subprocess
+
 from intervaltree import Interval, IntervalTree
 import itertools
 from sqlitedict import SqliteDict
@@ -24,6 +26,7 @@ user_transcript_id = sys.argv[5]
 user_gene_name = sys.argv[6]
 # Set to true if transcript version is included in transcript_id, e.g: ENST000000123456.1
 TRAN_VERSION = True
+output = sys.argv[7]
 
 
 if os.path.isfile("{}.sqlite".format(organism)):
@@ -610,7 +613,7 @@ for chrom in genomic_cds_dict:
 # print (list(tree_dict))
 
 
-connection = sqlite3.connect("{}.sqlite".format(organism))
+connection = sqlite3.connect(output)
 cursor = connection.cursor()
 cursor.execute(
     "CREATE TABLE IF NOT EXISTS transcripts (transcript VARCHAR(50), gene VARCHAR(50), length INT(6), cds_start INT(6), cds_stop INT(6), sequence VARCHAR(50000), strand CHAR(1), stop_list VARCHAR(10000), start_list VARCHAR(10000), exon_junctions VARCHAR(1000), tran_type INT(1), gene_type INT(1), principal INT(1), version INT(2),gc INT(3),five_gc INT(3), cds_gc INT(3), three_gc INT(3), chrom VARCHAR(20));"
@@ -969,9 +972,9 @@ for transcript in master_dict:
                     transcript, tup[0], tup[1]
                 )
             )
-
-connection.commit()
-connection.close()
+# print(cursor.execute(
+#     ".tables"
+#     ))
 
 print("delim", delimiters)
 if (nuc_dict["starts"]["other"] / nuc_dict["starts"]["starts"]) > 0.05:
@@ -992,3 +995,10 @@ if len(notinannotation) > 0:
             len(notinannotation)
         )
     )
+
+
+
+connection.commit()
+connection.close()
+
+

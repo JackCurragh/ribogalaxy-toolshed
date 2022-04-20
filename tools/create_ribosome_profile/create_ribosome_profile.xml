@@ -4,7 +4,7 @@
         <requirement type="package" version="1.79">biopython</requirement>
         <requirement type="package" version="0.19.0">pysam</requirement>
     </requirements>
-    <command>python $__tool_directory__/bam_to_ribosome_profile.py ${input1} ${input2} ${input3} ${input4}</command>
+    <command>python $__tool_directory__/bam_to_ribosome_profile.py ${input1} ${input2} ${input3} ${input4} ${output1}</command>
     <inputs>
         <param name="input1" type="data" format="bam" label="BAM file to process"/>
         <param name="input2" type="integer" value="15" label="Offset to use" help="Use 15 for elongating ribosomes, 12 for initiating and 0 form RNA-seq reads"/>

@@ -130,3 +130,5 @@ dmypy.json
 
 *.gz
 *.xz
+
+*test_output*

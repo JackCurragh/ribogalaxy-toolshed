@@ -228,8 +228,8 @@ def get_mismatch_pos(md_tag, pos, readlen, master_read_dict, tran, readseq):
     return (pos_modifier, readlen_modifier, mismatches)
 
 
-def process_bam(bam_filepath, transcriptome_info_dict_path, outputfile):
-    desc = "NULL"
+def process_bam(bam_filepath, transcriptome_info_dict_path, outputfile, desc):
+    desc = desc
     start_time = time.time()
     study_dict = {}
     nuc_count_dict = {"mapped": {}, "unmapped": {}}
@@ -288,7 +288,9 @@ def process_bam(bam_filepath, transcriptome_info_dict_path, outputfile):
     master_offset_dict = {"fiveprime": {}, "threeprime": {}}
     master_metagene_stop_dict = {"fiveprime": {}, "threeprime": {}}
 
-    infile = pysam.Samfile(bam_filepath, "rb")
+    os.system(f'samtools sort -n {bam_filepath} -o {bam_filepath}_n_sorted.bam')
+    pysam.set_verbosity(0)
+    infile = pysam.Samfile(f"{bam_filepath}_n_sorted.bam", "rb")
     header = infile.header["HD"]
     unsorted = False
     if "SO" in header:
@@ -720,9 +722,10 @@ if __name__ == "__main__":
         sys.exit()
     bam_filepath = sys.argv[1]
     annotation_sqlite_filepath = sys.argv[2]
-    # try:
-    # 	desc = sys.argv[3]
-    # except:
-    # 	desc = bam_filepath.split("/")[-1]
-    outputfile = bam_filepath + "v2.sqlite"
-    process_bam(bam_filepath, annotation_sqlite_filepath, outputfile)
+    try:
+        desc = sys.argv[3]
+    except:
+        desc = bam_filepath.split("/")[-1]
+
+    outputfile = sys.argv[4]
+    process_bam(bam_filepath, annotation_sqlite_filepath, outputfile, desc)

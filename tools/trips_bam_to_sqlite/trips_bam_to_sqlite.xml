@@ -2,26 +2,26 @@
     <description>Convert BAM file to SQLITE for TRIPS-Viz</description>
     <requirements>
         <requirement type="package" version="0.19.0">pysam</requirement>
-        <requirement type="package" version="2.0.0">sqlitedict</requirement>
+        <requirement type="package" version="1.7.0">sqlitedict</requirement>
         <requirement type="package" version="3.37.1">sqlite</requirement>
     </requirements>
     <command><![CDATA[
-        python $__tool_directory__/bam_to_sqlite.py <path_to_bam_file> <path_to_organism.sqlite> <file_description (optional)> 
+        python $__tool_directory__/bam_to_sqlite.py $input1 $input2 $input3 $output1
     ]]></command>
     <inputs>
-        <param name="input1" type="data" format="bam" label="BAM file" />
+        <param name="input1" type="data" format="bam" label="Sorted (samtools -n) BAM file" />
         <param name="input2" type="data" format="sqlite" label="Path to organism SQLITE annotation file" />
-        <param name="input3" type="data" format="text" label="Description of this sample" />
+        <param name="input3" type="text" label="Description of this sample" />
     </inputs>
     <outputs>
        <data name="output1" format="sqlite"/>
     </outputs>
     <tests>
         <test>
-            <param name="input1" value="test.bam" ftype="bam"/>
-            <param name="input2" value="test.sqlite" ftype="sqlite"/>
-            <param name="input3" value="TEST DESCRIPTION" ftype="text"/>
-            <output name="output1" file="test.bam.sqlite" ftype="sqlite" lines_diff="4" />
+            <param name="input1" value="test_n_sorted.bam" ftype="bam"/>
+            <param name="input2" value="test_org.sqlite" ftype="sqlite"/>
+            <param name="input3" value="TEST DESCRIPTION"/>
+            <output name="output1" file="test_n_sorted.bamv2.sqlite" ftype="sqlite" lines_diff="4" />
         </test>
     </tests>
     <help>
